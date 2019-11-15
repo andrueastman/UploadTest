@@ -1,0 +1,17 @@
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\FileUploadTask.exe
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\obj\Debug\netcoreapp3.0\FileUploadTask.csprojAssemblyReference.cache
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\obj\Debug\netcoreapp3.0\FileUploadTask.AssemblyInfoInputs.cache
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\obj\Debug\netcoreapp3.0\FileUploadTask.AssemblyInfo.cs
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\Microsoft.Identity.Client.dll
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\obj\Debug\netcoreapp3.0\FileUploadTask.csproj.CopyComplete
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\FileUploadTask.deps.json
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\FileUploadTask.runtimeconfig.json
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\FileUploadTask.runtimeconfig.dev.json
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\FileUploadTask.dll
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\FileUploadTask.pdb
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\Microsoft.Graph.dll
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\Microsoft.Graph.Core.dll
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\obj\Debug\netcoreapp3.0\FileUploadTask.dll
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\obj\Debug\netcoreapp3.0\FileUploadTask.pdb
+C:\Users\v-anomon\source\repos\FileUploadTask\FileUploadTask\bin\Debug\netcoreapp3.0\SWEBOKv3.pdf
