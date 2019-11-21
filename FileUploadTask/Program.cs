@@ -1,12 +1,8 @@
 ﻿using Microsoft.Graph;
 using Microsoft.Identity.Client;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FileUploadTask
@@ -47,10 +43,20 @@ namespace FileUploadTask
             }
 
             Console.WriteLine("Uploading large drive item file in slices");
-            await DriveItemUpload.UploadLargeFileInSlices(graphClient,id);
+            //await DriveItemUpload.UploadLargeFileInSlices(graphClient,id);
 
             Console.WriteLine("Uploading large drive item file with callbacks");
-            await DriveItemUpload.UploadLargeFileWithCallBacks(graphClient,id);
+            //await DriveItemUpload.UploadLargeFileWithCallBacks(graphClient,id);
+
+            var messages = await graphClient.Me.Messages.Request().GetAsync();
+            var messageId = messages.CurrentPage[5].Id;
+
+            Console.WriteLine("Uploading large attachement file in slices");
+            await FileAttachmentUpload.UploadLargeAttachmentInSlices(graphClient,messageId);
+
+            Console.WriteLine("Uploading large attachement file with callbacks");
+            await FileAttachmentUpload.UploadLargeAttachmentWithCallBack(graphClient, messageId);
+
         }
         
         /// <summary>

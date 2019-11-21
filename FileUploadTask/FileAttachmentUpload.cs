@@ -69,7 +69,7 @@ namespace FileUploadTask
             }
         }
 
-        public static async Task UploadLargeWithCallBack(IBaseClient graphClient, string messageId)
+        public static async Task UploadLargeAttachmentWithCallBack(IBaseClient graphClient, string messageId)
         {
 
             using Stream stream = Program.GetFileStream();
