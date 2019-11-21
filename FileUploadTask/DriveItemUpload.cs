@@ -50,7 +50,7 @@ namespace FileUploadTask
 
             // Create task
             var maxSliceSize = 320 * 1024; // 320 KB - Change this to your chunk size. 5MB is the default.
-            LargeFileUploadTask<DriveItem> largeFileUploadTask = new LargeFileUploadTask<DriveItem>(uploadSession, graphClient, stream, maxSliceSize);
+            LargeFileUploadTask<DriveItem> largeFileUploadTask = new LargeFileUploadTask<DriveItem>(uploadSession, stream, maxSliceSize);
 
             // Setup the chunk request necessities
             var slicesRequests = largeFileUploadTask.GetUploadSliceRequests();
@@ -97,7 +97,7 @@ namespace FileUploadTask
 
             // Create task
             var maxSliceSize = 320 * 1024; // 320 KB - Change this to your chunk size. 5MB is the default.
-            LargeFileUploadTask<DriveItem> largeFileUploadTask = new LargeFileUploadTask<DriveItem>(uploadSession, graphClient, stream, maxSliceSize);
+            LargeFileUploadTask<DriveItem> largeFileUploadTask = new LargeFileUploadTask<DriveItem>(uploadSession, stream, maxSliceSize);
 
             // Setup the progress monitoring
             IProgress<long> progress = new Progress<long>(progress =>

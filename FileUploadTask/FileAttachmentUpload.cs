@@ -38,7 +38,7 @@ namespace FileUploadTask
             // Create task
             var maxSliceSize = 320 * 1024; // 320 KB - Change this to your slice size.
 
-            LargeFileUploadTask<FileAttachment> largeFileUploadTask = new LargeFileUploadTask<FileAttachment>(uploadSession, graphClient, stream, maxSliceSize);
+            LargeFileUploadTask<FileAttachment> largeFileUploadTask = new LargeFileUploadTask<FileAttachment>(uploadSession, stream, maxSliceSize);
 
             // Setup the chunk request necessities
             var slicesRequests = largeFileUploadTask.GetUploadSliceRequests();
@@ -78,7 +78,7 @@ namespace FileUploadTask
 
             // Create task
             var maxSliceSize = 320 * 1024; // 320 KB - Change this to your slice size.
-            LargeFileUploadTask<FileAttachment> largeFileUploadTask = new LargeFileUploadTask<FileAttachment>(uploadSession, graphClient, stream, maxSliceSize);
+            LargeFileUploadTask<FileAttachment> largeFileUploadTask = new LargeFileUploadTask<FileAttachment>(uploadSession, stream, maxSliceSize);
 
             // Setup the progress mechanism
             IProgress<long> progress = new Progress<long>(progress =>
