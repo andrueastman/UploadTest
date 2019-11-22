@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUploadTask", "FileUploadTask\FileUploadTask.csproj", "{0D9A7240-8268-4504-8286-021ADFF17471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileUploadTask", "FileUploadTask\FileUploadTask.csproj", "{0D9A7240-8268-4504-8286-021ADFF17471}"
+	ProjectSection(ProjectDependencies) = postProject
+		{36A3D76B-9CD0-4C66-95A3-C4D5D516F08E} = {36A3D76B-9CD0-4C66-95A3-C4D5D516F08E}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Graph.Core", "msgraph-sdk-dotnet-core\src\Microsoft.Graph.Core\Microsoft.Graph.Core.csproj", "{36A3D76B-9CD0-4C66-95A3-C4D5D516F08E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{0D9A7240-8268-4504-8286-021ADFF17471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D9A7240-8268-4504-8286-021ADFF17471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D9A7240-8268-4504-8286-021ADFF17471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36A3D76B-9CD0-4C66-95A3-C4D5D516F08E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36A3D76B-9CD0-4C66-95A3-C4D5D516F08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36A3D76B-9CD0-4C66-95A3-C4D5D516F08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36A3D76B-9CD0-4C66-95A3-C4D5D516F08E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
