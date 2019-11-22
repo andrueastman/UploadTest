@@ -11,13 +11,23 @@ namespace FileUploadTask
     {
         static async Task Main()
         {
+            // get a itemid from the /drive/root/children endpoint using graph explorer
+            string driveItemId = "DRIVE ITEM ID";
+
+            // get a message from the /me/messages endpoint using graph explorer
+            string messageId = "MESSAGE ID";
+
+            // APP client for app
+            string clientID = "APP ID FOR APPlICATION";
+
             /* Do the auth stuff first */
             IPublicClientApplication publicClientApplication = PublicClientApplicationBuilder
-                .Create("d662ac70-7482-45af-9dc3-c3cde8eeede4")
+                .Create(clientID)
                 .WithRedirectUri("http://localhost:1234")
                 .Build();
 
-            var scopes = new[] { "User.Read", "Mail.ReadWrite" };
+            var scopes = new[] { "User.Read", "Mail.ReadWrite", "Sites.ReadWrite.All" };
+
             var authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
 
             /* Create a DelegateAuthenticationProvider to use */
@@ -30,17 +40,11 @@ namespace FileUploadTask
 
             var graphClient = new BaseClient("https://graph.microsoft.com/v1.0/", delegatingAuthProvider);
 
-            // get a itemid from the /drive/root/children endpoint using graph explorer
-            string driveItemId = "01WICLWWBGFKLMVC54ZJCJ6D7654VWZCLD";
-
             Console.WriteLine("Uploading large drive item file in slices");
             await DriveItemUpload.UploadLargeFileInSlices(graphClient, driveItemId);
 
             Console.WriteLine("Uploading large drive item file with callbacks");
             await DriveItemUpload.UploadLargeFileWithCallBacks(graphClient, driveItemId);
-
-            // get a message from the /me/messages endpoint using graph explorer
-            string messageId = "AAMkADcyMWRhMWZmLTFlMjUtNGNmMS1hNGMwLTgwZjc4YTM1OGJkMABGAAAAAABQGcMSxjfySL9jI-9KPCamBwCHxMu3VWSLRbuEFlqpOoZNAAAAAAEMAACHxMu3VWSLRbuEFlqpOoZNAAAdBwU1AAA=";
 
             Console.WriteLine("Uploading large attachement file in slices");
             await FileAttachmentUpload.UploadLargeAttachmentInSlices(graphClient,messageId);
