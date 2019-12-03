@@ -35,53 +35,6 @@ namespace FileUploadTask
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="graphClient"></param>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        public static async Task UploadLargeFileInSlices(IBaseClient graphClient, string itemId)
-        {
-            
-            using Stream stream = Program.GetFileStream();
-
-            // Create upload session 
-            var uploadSession = await CreateDriveItemUploadSession(graphClient, itemId);
-
-            // Create task
-            var maxSliceSize = 320 * 1024; // 320 KB - Change this to your chunk size. 5MB is the default.
-            LargeFileUploadTask<DriveItem> largeFileUploadTask = new LargeFileUploadTask<DriveItem>(uploadSession, stream, maxSliceSize);
-
-            // Setup the chunk request necessities
-            var slicesRequests = largeFileUploadTask.GetUploadSliceRequests();
-            var trackedExceptions = new List<Exception>();
-            DriveItem itemResult = null;
-
-            try
-            {
-                //upload the chunks
-                foreach (var request in slicesRequests)
-                {
-                    // Send chunk request
-                    var result = await largeFileUploadTask.UploadSliceAsync(request, trackedExceptions);
-                    // Do your updates here: update progress bar, etc.
-                    Console.WriteLine($"File uploading in progress. {request.RangeEnd} of {stream.Length} bytes uploaded");
-
-                    if (result.UploadSucceeded)
-                    {
-                        itemResult = result.ItemResponse;
-                        Console.WriteLine($"File uploading complete");
-                    }
-                }
-            }
-            catch (ServiceException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-
-        /// <summary>
         /// Upload a large file using callbacks
         /// </summary>
         /// <param name="graphClient">Client for upload</param>
@@ -117,6 +70,7 @@ namespace FileUploadTask
             }
             catch (ServiceException e)
             {
+                Console.WriteLine("Something went wrong with the upload");
                 Console.WriteLine(e.Message);
             }
 

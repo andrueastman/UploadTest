@@ -40,14 +40,8 @@ namespace FileUploadTask
 
             var graphClient = new BaseClient("https://graph.microsoft.com/v1.0/", delegatingAuthProvider);
 
-            Console.WriteLine("Uploading large drive item file in slices");
-            await DriveItemUpload.UploadLargeFileInSlices(graphClient, driveItemId);
-
             Console.WriteLine("Uploading large drive item file with callbacks");
             await DriveItemUpload.UploadLargeFileWithCallBacks(graphClient, driveItemId);
-
-            Console.WriteLine("Uploading large attachement file in slices");
-            await FileAttachmentUpload.UploadLargeAttachmentInSlices(graphClient,messageId);
 
             Console.WriteLine("Uploading large attachement file with callbacks");
             await FileAttachmentUpload.UploadLargeAttachmentWithCallBack(graphClient, messageId);
