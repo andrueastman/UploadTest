@@ -10,7 +10,7 @@ namespace FileUploadTask
 {
     class Program
     {
-        const string clientID = "11e584da-5b80-404b-9a3c-0d510c105513"; // APP client id for app
+        const string clientID = "CLIENT_ID"; // APP client id for app
         const string filesDirectory = "C:\\Users\\user2\\Downloads\\BigFiles\\"; // Location of a large number of large files
 
         static async Task Main()
