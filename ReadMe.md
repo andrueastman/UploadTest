@@ -4,12 +4,8 @@ Sample app to show how one can upload a file to drive and/or FileAttachement.
 To run the app, replace the following values in the Program.cs
 
 ```cs
-            // get a itemid from the /drive/root/children endpoint using graph explorer
-            string driveItemId = "DRIVE ITEM ID";
+const string filesDirectory = "C:\\Users\\user2\\Downloads\\BigFiles\\"; // Location of a large number of large files
 
-            // get a message from the /me/messages endpoint using graph explorer
-            string messageId = "MESSAGE ID";
-
-            // APP client for app
-            string clientID = "APP ID FOR APPlICATION";
+// APP client for app
+const string clientID = "APP ID FOR APPlICATION";
 ```
