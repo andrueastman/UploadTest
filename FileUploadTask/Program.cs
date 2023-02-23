@@ -1,10 +1,9 @@
 using Microsoft.Graph;
-using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Azure.Identity;
 
 namespace FileUploadTask
 {
@@ -16,23 +15,9 @@ namespace FileUploadTask
         static async Task Main()
         {
             /* Do the auth stuff first */
-            IPublicClientApplication publicClientApplication = PublicClientApplicationBuilder
-                .Create(clientID)
-                .WithRedirectUri("http://localhost:1234")
-                .Build();
-
-            var scopes = new[] { "User.Read", "Mail.ReadWrite", "Sites.ReadWrite.All" };
-
-            var authResult = await publicClientApplication.AcquireTokenInteractive(scopes).ExecuteAsync();
-
-            /* Create a DelegateAuthenticationProvider to use */
-            var delegatingAuthProvider = new DelegateAuthenticationProvider((requestMessage) =>
-            {
-                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", authResult.AccessToken);
-                return Task.FromResult(0);
-            });
-
-            var graphClient = new GraphServiceClient(delegatingAuthProvider);
+            var scopes = new[] { "Sites.ReadWrite.All" };
+            var interactiveCredential = new InteractiveBrowserCredential(clientID);
+            var graphClient = new GraphServiceClient(interactiveCredential,scopes);
 
             for (int i =0; i< 20; i++)
             {
