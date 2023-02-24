@@ -65,7 +65,8 @@ namespace FileUploadTask
             var uploadResult = await UploadFileAsync(fileUploadTask,progress);
             while (retries < 3 && !uploadResult)
             {
-                await UploadFileAsync(fileUploadTask, progress, true);
+                uploadResult = await UploadFileAsync(fileUploadTask, progress, true);
+                retries++;
             }
 
         }
