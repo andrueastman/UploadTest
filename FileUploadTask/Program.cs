@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Azure.Identity;
+using System.Diagnostics;
+using System.IO.Pipes;
 
 namespace FileUploadTask
 {
     class Program
     {
-        const string clientID = "CLIENT_ID"; // APP client id for app
-        const string filesDirectory = "C:\\Users\\user2\\Downloads\\BigFiles\\"; // Location of a large number of large files
+        const string clientID = "11e584da-5b80-404b-9a3c-0d510c105513"; // APP client id for app
+        const string filesDirectory = "C:\\Users\\anomondi\\Downloads\\BigFiles\\"; // Location of a large number of large files
 
         static async Task Main()
         {
@@ -59,25 +61,39 @@ namespace FileUploadTask
                 Console.WriteLine($"Uploaded {prog} bytes of {fileStream.Length} bytes");
             });
 
+            var retries = 0;
+            var uploadResult = await UploadFileAsync(fileUploadTask,progress);
+            while (retries < 3 && !uploadResult)
+            {
+                await UploadFileAsync(fileUploadTask, progress, true);
+            }
+
+        }
+
+        public static async Task<bool> UploadFileAsync(LargeFileUploadTask<DriveItem> fileUploadTask, IProgress<long> progress, bool resume = false)
+        {
             try
             {
                 // Upload the file
-                var uploadResult = await fileUploadTask.UploadAsync(progress);
+                var uploadResult = resume ? await fileUploadTask.ResumeAsync(progress) : await fileUploadTask.UploadAsync(progress);
 
                 if (uploadResult.UploadSucceeded)
                 {
                     // The ItemResponse object in the result represents the
                     // created item.
                     Console.WriteLine($"Upload complete, item ID: {uploadResult.ItemResponse.Id}");
+                    return true;
                 }
                 else
                 {
                     Console.WriteLine("Upload failed");
+                    return false;
                 }
             }
-            catch (ServiceException ex)
+            catch (TaskCanceledException ex)
             {
                 Console.WriteLine($"Error uploading: {ex}");
+                return false;
             }
         }
         
